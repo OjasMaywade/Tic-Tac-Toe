@@ -5,44 +5,76 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
+    flex-direction: column;
 }
 /* #main{ }*/
 .top{
-    width: 300px;
+    width: 400px;
     height: 50px;
-    /* background-color: red; */
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-around;
 }
 .next{
     width: 50%;
     height: 100%;
-    flex-grow: 2;
+    /* flex-grow: 2; */
 }
-.drop-down{
+.dropdown{
    color: white;
    border-radius: 10px;
-   width: 75px;
+   width: 90px;
    height: 50px;
 }
+#dropdown-content{
+    display: none;
+}
+.dropdown-content-click {
+  display: block;
+}
 .boxes{
-    width: 300px;
-    height: 300px;
-    /* background-color: black; */
+    width: 400px;
+    height: 400px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
 }
 .boxes>div{
-    width: 75px;
-    height: 75px;
+    width: 100px;
+    height: 100px;
     background-color: #576CBC;
     margin-right: 5px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.box:hover{
+    opacity: 0.9;
+}
+.x-symbol {
+    position: relative;
+  }
+  .x-symbol::after {
+    position: absolute;
+    content: "X";
+    font-size: 35px;
+    font-family: "Comfortaa";
+    color: #F7D060;
+  }
+  .o-symbol {
+    position: relative;
+  }
+  .o-symbol::after {
+    content: "O";
+    font-size: 35px;
+    font-family: "Comfortaa";
+    color: #05BFDB;
+  }
 .bottom{
-    width: 300px;
+    width: 400px;
     height: 50px;
     display: flex;
     flex-direction: row;
@@ -50,8 +82,29 @@ body{
     /* background-color: white; */
 }
 .bottom>div{
-  width: 75px;
+  width: 100px;
   height: 50px;
   border-radius: 15px;
-  
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.player-1{
+    background-color: #05BFDB;
+}
+.ties{
+    background-color: #F0F0F0;
+}
+.player-2{
+    background-color: #F7D060;
+}
+p{
+    margin-top: 8px;
+    margin-bottom: 2px ;
+}
+h6{
+    margin: 5px;
+    font-weight: normal;
+}
+footer{
+    margin-top: 100px;
+    color: white;
 }
