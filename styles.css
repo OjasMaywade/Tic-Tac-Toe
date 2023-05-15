@@ -21,16 +21,19 @@ body{
     /* flex-grow: 2; */
 }
 .dropdown{
-   color: white;
+    color: white;
    border-radius: 10px;
    width: 90px;
    height: 50px;
+   z-index: 2; 
 }
-#dropdown-content{
+.dropdown-content{
     display: none;
 }
-.dropdown-content-click {
+.dropdown-click {
   display: block;
+  background-color: black;
+  
 }
 .boxes{
     width: 400px;

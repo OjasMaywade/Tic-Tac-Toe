@@ -1,0 +1,24 @@
+let turn = "o"; // Initialize turn to "o"
+
+for (let i = 0; i <= 9; i++) {
+    document.querySelectorAll(".box")[i].addEventListener("click", function() {
+        if (!this.classList.contains("o-symbol") && !this.classList.contains("x-symbol")) {
+            // Check if the box is empty
+            if (turn === "o") {
+                this.classList.add("o-symbol");
+                turn = "x"; // Switch to "x" turn
+            } else {
+                this.classList.add("x-symbol");
+                turn = "o"; // Switch to "o" turn
+            }
+            // Add animation to show whose turn it is
+            document.querySelector(".turn-indicator").classList.toggle("o-turn");
+            document.querySelector(".turn-indicator").classList.toggle("x-turn");
+        }
+    });
+}
+
+document.querySelector(".btn").addEventListener("click", function() {
+    alert("Got Clicked");
+    // document.querySelector("#dropdown-content").classList.add("dropdown-content-click")
+});
