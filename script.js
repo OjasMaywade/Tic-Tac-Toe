@@ -1,19 +1,28 @@
 let clicked = 0;
-let matrix = [
-    [],
-    [],
-    []
-];
+
+let matrix = [, , ,];
+for(j=0;j<=2;j++){
+   matrix[j] = [, , ,];
+}
+console.log(matrix);
+// Can we create a object or array that can store value of each element according to its preference
+// basically we have to create a storage system which will store the response from the users and then compare it to get the result.
+//use mathematics array i and j terms to compare the matrix element
+// problem with the previous matrix was because of the id of the box
 for(i=0;i<=8;i++){
-    document.querySelectorAll(".box")[i].addEventListener("click", function(event){
-        let box_id = event.target.id;
+    document.querySelectorAll(".boxes>div")[i].addEventListener("click", function(event){
+        let col= event.target.id;
+        let row = event.target.className;
+        console.log(row);
         if(clicked%2==0){
-        document.querySelectorAll(".box")[box_id].classList.add("o-symbol");
-        matrix[0][box_id]=(box_id);
+        document.querySelectorAll(".boxes>div")[col].classList.add("o-symbol");
+        matrix[row][col]=("o");
         }else{
-        document.querySelectorAll(".box")[box_id].classList.add("x-symbol");
+        document.querySelectorAll(".boxes>div")[col].classList.add("x-symbol");
+        matrix[row][col]=("x");
         }
         clicked++;
+        console.log(matrix);
         /*Add code to put O or X in the boxes alternatively and add animation to show hows turn it is.. */
     })
 }
