@@ -50,17 +50,23 @@ button{
     justify-content: space-around;
 }
 .boxes>div{
+    display: flex;
+    flex-direction: row;   
+    width: 400px;
+    justify-content: space-around; 
+}
+.boxes>div>div{
     width: 100px;
     height: 100px;
     background-color: #576CBC;
-    margin-right: 5px;
+    /* margin-right: 5px; */
     border-radius: 8px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.boxes>div:hover{
+.boxes>div>div:hover{
     opacity: 0.9;
 }
 .x-symbol {
