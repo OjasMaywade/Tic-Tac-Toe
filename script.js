@@ -21,28 +21,61 @@ for(i=0;i<=8;i++){
         matrix[row][col]=("x");
         }
         clicked++;
-        
+        checkWin();
     
         /*Add code to put O or X in the boxes alternatively and add animation to show hows turn it is.. */
+        /* Improve the code So the user can avoid clicking to occupied box and losing their turn */
     })
 }
-/*
-for(m=0;m<=2;m++){
-    if(matrix[m][0]===matrix[m][1] && matrix[m][1]===matrix[m][2]){
-        alert("Wins");
+
+function checkWin(){
+    for(m=0;m<=2;m++){
+        if(matrix[m][0] != null || matrix[m][1] != null || matrix[m][2] != null ){
+            if(matrix[m][0]===matrix[m][1] && matrix[m][1]===matrix[m][2]){
+                updateScore(m,n=0);
+            }
+        }
+    }
+    for(n=0;n<=2;n++){
+       if(matrix[0][n] != null || matrix[1][n] != null || matrix[2][n] != null ){
+        if(matrix[0][n]===matrix[1][n] && matrix[1][n]===matrix[2][n]){
+            updateScore(m=0,n)
+        }
+    }
+    }
+    if(matrix[0][0] != null || matrix[1][1] != null || matrix[2][2] != null )
+    if(matrix[0][0]===matrix[1][1] && matrix[1][1]===matrix[2][2]){
+        let m=1, n = 1;
+        updateScore(m,n);
+    }
+    if(matrix[0][2] != null || matrix[1][1] != null || matrix[2][1] != null )
+    if(matrix[0][2]===matrix[1][1] && matrix[1][1]===matrix[2][0]){
+        let m=1, n = 1;
+        updateScore(m, n);
+    }
+    /*Write code for checking ties */
+}
+
+function updateScore(){
+    if(matrix[m][n]==="x"){
+        alert("X Wins");
+        document.querySelector(".player-1>h6").innerHTML = 1 + " Win";
+    }else if(matrix[m][n]==="o"){
+        alert("O Wins");
+        document.querySelector(".player-2>h6").innerHTML = 1 + " Win";
+    }else{
+        document.querySelector(".ties>h6").innerHTML = 1 + " Win";
     }
 }
-    /*for(n=0;n<=2;n++){
-        if(matrix[0][n]===matrix[1][n] && matrix[1][n]===matrix[2][n]){
-            alert("Wins");
-        }
-    }*/
-
+   
+/* Replace the 1 from the innerHTML manipulation and substitude it with some variable which keeps the count of numbers of wins */
 
     
 
 document.querySelector("button").addEventListener("click", function(){
    document.querySelector(".dropdown-content").classList.toggle("dropdown-click")
+
+   /* Add functionality to the item inside the dropdown so, that they can provide the necessary function */
     
 })
 
