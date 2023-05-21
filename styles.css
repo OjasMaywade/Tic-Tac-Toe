@@ -88,6 +88,30 @@ button{
     font-family: "Comfortaa";
     color: #05BFDB;
   }
+  .pop-up{
+    display: none;
+  }
+  
+  .pop-win{
+    background-color: #537188;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 125px;
+    z-index: 1 ;
+    position: absolute;
+  }
+  .pop-win>button{
+    background-color: #05BFDB;
+    margin-top: 10px;
+    height: 35px;
+  }
+  .pop-win>p{
+     color: white;
+  }
 .bottom{
     width: 400px;
     height: 50px;
@@ -122,4 +146,7 @@ h6{
 footer{
     margin-top: 100px;
     color: white;
+}
+.blur{
+    opacity: 0.3;
 }

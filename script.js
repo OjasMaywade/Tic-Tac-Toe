@@ -1,4 +1,7 @@
 let clicked = 0;
+let win_o = 0;
+let win_x = 0;
+let ties = 0;
 
 let matrix = [, , ,];
 for(j=0;j<=2;j++){
@@ -59,24 +62,43 @@ function checkWin(){
 }
     
     /*Write code for checking ties */
+    /* Add a pop up which displays the results (done)*/
 }
 
 function updateScore(m,n){
     if(matrix[m][n]==="x"){
-        alert("X Wins");
-        document.querySelector(".player-1>h6").innerHTML = 1 + " Win";
+        win_x++;
+        document.querySelector("#main").classList.add("blur");
+        document.querySelector(".pop-up").classList.add("pop-win");
+        document.querySelector(".pop-up>p").innerHTML = "Player-1 Wins";
+        document.querySelector(".player-1>h6").innerHTML = win_x + " Win";
     }else if(matrix[m][n]==="o"){
-        alert("O Wins");
-        document.querySelector(".player-2>h6").innerHTML = 1 + " Win";
+        win_o++;
+        document.querySelector("#main").classList.add("blur");
+        document.querySelector(".pop-up").classList.add("pop-win");
+        document.querySelector(".pop-up>p").innerHTML = "Player-2 Wins";
+        document.querySelector(".player-2>h6").innerHTML = win_o + " Win";
     }else{
         alert("Draw");
-        document.querySelector(".ties>h6").innerHTML = 1 + " Win";
+        ties++;
+        document.querySelector(".ties>h6").innerHTML = ties + " Win";
     }
 }
    
-/* Replace the 1 from the innerHTML manipulation and substitude it with some variable which keeps the count of numbers of wins */
+/* Replace the 1 from the innerHTML manipulation and substitude it with some variable which keeps the count of numbers of wins (done) */
 
-    
+document.querySelector(".play-again").addEventListener("click", function(){
+    matrix = [, , ,];
+    for(j=0;j<=2;j++){
+   matrix[j] = [, , ,];
+}
+    for(i=0;i<=8;i++){
+        document.querySelectorAll(".boxes>div>div")[i].classList.remove("o-symbol");
+        document.querySelectorAll(".boxes>div>div")[i].classList.remove("x-symbol");
+        }
+        document.querySelector("#main").classList.remove("blur");
+        document.querySelector(".pop-up").classList.remove("pop-win");
+});
 
 document.querySelector("button").addEventListener("click", function(){
    document.querySelector(".dropdown-content").classList.toggle("dropdown-click")
@@ -88,6 +110,6 @@ document.querySelector("button").addEventListener("click", function(){
 
 
 
-/*write logic for deciding who won the game or it is a draw */
-/*After deciding who won the game make a pop up and declare the result and update the result in the block below */
+/*write logic for deciding who won the game (done) or it is a draw */
+/*After deciding who won the game make a pop up and declare the result and update the result in the block below (done) */
 
