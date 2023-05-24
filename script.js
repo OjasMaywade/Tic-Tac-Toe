@@ -2,6 +2,7 @@ let clicked = 0;
 let win_o = 0;
 let win_x = 0;
 let ties = 0;
+let tie = true;
 
 let matrix = [, , ,];
 for(j=0;j<=2;j++){
@@ -20,7 +21,7 @@ for(i=0;i<=8;i++){
         document.querySelectorAll(".boxes>div>div")[bId].classList.add("o-symbol");
         matrix[row][col[0]]=("o");
         clicked++;
-        }else if(matrix[row][col[0]] == null){
+        }else if(clicked%2!=0 && matrix[row][col[0]] == null){
         document.querySelectorAll(".boxes>div>div")[bId].classList.add("x-symbol");
         matrix[row][col[0]]=("x");
         clicked++;
@@ -38,29 +39,44 @@ function checkWin(){
         if(matrix[m][0] != null || matrix[m][1] != null || matrix[m][2] != null ){
             if(matrix[m][0]===matrix[m][1] && matrix[m][1]===matrix[m][2]){
                 updateScore(m,n=0);
+                tie=false;
+                popUp();
             }
         }
     }
     for(n=0;n<=2;n++){
        if(matrix[0][n] != null || matrix[1][n] != null || matrix[2][n] != null ){
         if(matrix[0][n]===matrix[1][n] && matrix[1][n]===matrix[2][n]){
-            updateScore(m=0,n)
+            updateScore(m=0,n);
+            tie=false;
+            popUp();
         }
     }
     }
     if(matrix[0][0] != null || matrix[1][1] != null || matrix[2][2] != null ){
     if(matrix[0][0]===matrix[1][1] && matrix[1][1]===matrix[2][2]){
-        let m=1, n = 1;
+        //let m=1, n = 1;
         updateScore(1,1);
+        tie=false;
+        popUp();
     }
 }
     if(matrix[0][2] != null || matrix[1][1] != null || matrix[2][1] != null ){
     if(matrix[0][2]===matrix[1][1] && matrix[1][1]===matrix[2][0]){
-        let m=1, n = 1;
+        //let m=1, n = 1;
         updateScore(1,1);
+        tie=false;
+        popUp();
+
     }
 }
-    
+if(tie){
+    alert("h")
+    updateScore();
+}
+ 
+
+
     /*Write code for checking ties */
     /* Add a pop up which displays the results (done)*/
 }
@@ -86,7 +102,7 @@ function updateScore(m,n){
 }
    
 /* Replace the 1 from the innerHTML manipulation and substitude it with some variable which keeps the count of numbers of wins (done) */
-
+function popUp(){
 document.querySelector(".play-again").addEventListener("click", function(){
     matrix = [, , ,];
     for(j=0;j<=2;j++){
@@ -98,8 +114,9 @@ document.querySelector(".play-again").addEventListener("click", function(){
         }
         document.querySelector("#main").classList.remove("blur");
         document.querySelector(".pop-up").classList.remove("pop-win");
+        clicked=0;
 });
-
+}
 document.querySelector("button").addEventListener("click", function(){
    document.querySelector(".dropdown-content").classList.toggle("dropdown-click")
 

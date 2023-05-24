@@ -91,7 +91,6 @@ button{
   .pop-up{
     display: none;
   }
-  
   .pop-win{
     background-color: #537188;
     border-radius: 15px;
@@ -101,7 +100,6 @@ button{
     align-items: center;
     width: 250px;
     height: 125px;
-    z-index: 1 ;
     position: absolute;
   }
   .pop-win>button{
