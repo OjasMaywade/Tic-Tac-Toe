@@ -2,7 +2,7 @@ let clicked = 0;
 let win_o = 0;
 let win_x = 0;
 let ties = 0;
-let tie = true;
+let result;
 
 let matrix = [, , ,];
 for(j=0;j<=2;j++){
@@ -39,8 +39,8 @@ function checkWin(){
         if(matrix[m][0] != null || matrix[m][1] != null || matrix[m][2] != null ){
             if(matrix[m][0]===matrix[m][1] && matrix[m][1]===matrix[m][2]){
                 updateScore(m,n=0);
-                tie=false;
-                popUp();
+                result=true;
+                popUp()
             }
         }
     }
@@ -48,8 +48,8 @@ function checkWin(){
        if(matrix[0][n] != null || matrix[1][n] != null || matrix[2][n] != null ){
         if(matrix[0][n]===matrix[1][n] && matrix[1][n]===matrix[2][n]){
             updateScore(m=0,n);
-            tie=false;
-            popUp();
+            result=true;
+            popUp()
         }
     }
     }
@@ -57,29 +57,22 @@ function checkWin(){
     if(matrix[0][0]===matrix[1][1] && matrix[1][1]===matrix[2][2]){
         //let m=1, n = 1;
         updateScore(1,1);
-        tie=false;
-        popUp();
+        result=true;
+        popUp()
     }
 }
     if(matrix[0][2] != null || matrix[1][1] != null || matrix[2][1] != null ){
     if(matrix[0][2]===matrix[1][1] && matrix[1][1]===matrix[2][0]){
         //let m=1, n = 1;
         updateScore(1,1);
-        tie=false;
-        popUp();
-
+        result=true;
+        popUp()
     }
-}
-if(tie){
-    alert("h")
-    updateScore();
-}
- 
+} 
 
-
-    /*Write code for checking ties */
+  }  /*Write code for checking ties */
     /* Add a pop up which displays the results (done)*/
-}
+
 
 function updateScore(m,n){
     if(matrix[m][n]==="x"){
@@ -94,10 +87,6 @@ function updateScore(m,n){
         document.querySelector(".pop-up").classList.add("pop-win");
         document.querySelector(".pop-up>p").innerHTML = "Player-2 Wins";
         document.querySelector(".player-2>h6").innerHTML = win_o + " Win";
-    }else{
-        alert("Draw");
-        ties++;
-        document.querySelector(".ties>h6").innerHTML = ties + " Win";
     }
 }
    
@@ -124,9 +113,29 @@ document.querySelector("button").addEventListener("click", function(){
     
 })
 
+document.querySelector(".reset").addEventListener("click", function(){
+    matrix = [, , ,];
+    for(j=0;j<=2;j++){
+   matrix[j] = [, , ,];
+}
+    for(i=0;i<=8;i++){
+        document.querySelectorAll(".boxes>div>div")[i].classList.remove("o-symbol");
+        document.querySelectorAll(".boxes>div>div")[i].classList.remove("x-symbol");
+        }
+})
 
-
-
+document.querySelector(".new-round").addEventListener("click", function(){
+    win_o = 0;
+    win_x = 0;
+    ties = 0;
+    document.querySelector(".player-1>h6").innerHTML = win_x + " Win";
+    document.querySelector(".player-2>h6").innerHTML = win_o + " Win";
+})
 /*write logic for deciding who won the game (done) or it is a draw */
 /*After deciding who won the game make a pop up and declare the result and update the result in the block below (done) */
 
+/* 
+1. Write logic for tie game
+2. Make chance animation
+3. add functionality to drowdrop menu
+*/
