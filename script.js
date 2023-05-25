@@ -122,6 +122,8 @@ document.querySelector(".reset").addEventListener("click", function(){
         document.querySelectorAll(".boxes>div>div")[i].classList.remove("o-symbol");
         document.querySelectorAll(".boxes>div>div")[i].classList.remove("x-symbol");
         }
+        
+        document.querySelector(".dropdown-content").classList.remove("dropdown-click")
 })
 
 document.querySelector(".new-round").addEventListener("click", function(){
@@ -130,12 +132,14 @@ document.querySelector(".new-round").addEventListener("click", function(){
     ties = 0;
     document.querySelector(".player-1>h6").innerHTML = win_x + " Win";
     document.querySelector(".player-2>h6").innerHTML = win_o + " Win";
+    document.querySelector(".dropdown-content").classList.remove("dropdown-click")
 })
 /*write logic for deciding who won the game (done) or it is a draw */
 /*After deciding who won the game make a pop up and declare the result and update the result in the block below (done) */
 
 /* 
 1. Write logic for tie game
-2. Make chance animation
-3. add functionality to drowdrop menu
+2. Make chance animation and drop down animation 
+3. add functionality to drowdrop menu (done)
+4. Add comments to code and improve the code structure
 */

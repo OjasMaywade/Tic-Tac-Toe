@@ -39,7 +39,9 @@ button{
 .dropdown-click {
   display: block;
   background-color: #537188;
-  
+}
+a{
+  color: white;
 }
 .boxes{
     width: 400px;
