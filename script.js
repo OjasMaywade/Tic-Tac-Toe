@@ -10,7 +10,7 @@ for(j=0;j<=2;j++){
 }
 
 // basically we have to create a storage system which will store the response from the users and then compare it to get the result.
-//use mathematics array m and n terms to compare the matrix element
+// use mathematics array m and n terms to compare the matrix element
 // problem with the previous matrix was because of the id of the box
 for(i=0;i<=8;i++){
     document.querySelectorAll(".boxes>div>div")[i].addEventListener("click", function(event){
@@ -28,7 +28,7 @@ for(i=0;i<=8;i++){
         }
     
         checkWin();
-    
+        checkTie();
         /*Add code to put O or X in the boxes alternatively (Done) and add animation to show hows turn it is.. */
         /* Improve the code So the user can avoid clicking to occupied box and losing their turn (Done)*/
     })
@@ -42,35 +42,59 @@ function checkWin(){
                 result=true;
                 popUp()
             }
-        }
-    }
-    for(n=0;n<=2;n++){
-       if(matrix[0][n] != null || matrix[1][n] != null || matrix[2][n] != null ){
-        if(matrix[0][n]===matrix[1][n] && matrix[1][n]===matrix[2][n]){
-            updateScore(m=0,n);
+        }if(matrix[0][m] != null || matrix[1][m] != null || matrix[2][m] != null ){
+          if(matrix[0][m]===matrix[1][m] && matrix[1][m]===matrix[2][m]){
+            updateScore(0,m);
             result=true;
             popUp()
+            }
+        } if(matrix[0][0] != null || matrix[1][1] != null || matrix[2][2] != null ){
+            if(matrix[0][0]===matrix[1][1] && matrix[1][1]===matrix[2][2]){
+            //let m=1, n = 1;
+            updateScore(1,1);
+            result=true;
+            popUp()
+            }
+        } if(matrix[0][2] != null || matrix[1][1] != null || matrix[2][1] != null ){
+           if(matrix[0][2]===matrix[1][1] && matrix[1][1]===matrix[2][0]){
+            //let m=1, n = 1;
+            updateScore(1,1);
+            result=true;
+            popUp()
+           }
         }
-    }
-    }
-    if(matrix[0][0] != null || matrix[1][1] != null || matrix[2][2] != null ){
-    if(matrix[0][0]===matrix[1][1] && matrix[1][1]===matrix[2][2]){
-        //let m=1, n = 1;
-        updateScore(1,1);
-        result=true;
-        popUp()
+    } 
+}  
+
+function checkTie(){
+  for(m=0;m<=2;m++){
+        if(matrix[m][0] != null && matrix[m][1] != null && matrix[m][2] != null ){
+            if(matrix[m][0]!==matrix[m][1] || matrix[m][1]!==matrix[m][2]){ 
+                if(matrix[0][m] != null && matrix[1][m] != null && matrix[2][m] != null ){
+                    if(matrix[0][m]!==matrix[1][m] || matrix[1][m]===matrix[2][m]){
+                        if(matrix[0][0] != null && matrix[1][1] != null && matrix[2][2] != null ){
+                            if(matrix[0][0]!==matrix[1][1] || matrix[1][1]!==matrix[2][2]){
+                                if(matrix[0][2] != null && matrix[1][1] != null && matrix[2][1] != null ){
+                                    if(matrix[0][2]!==matrix[1][1] || matrix[1][1]!==matrix[2][0]){
+                                        ties++;
+                                        document.querySelector(".pop-up").classList.add("pop-win");
+                                        document.querySelector("#main").classList.add("blur");
+                                        document.querySelector(".ties>h6").innerHTML = ties;
+                                        document.querySelector(".pop-up>p").innerHTML = "Tie";
+                                        popUp();
+                                        m=2;
+                                    }
+                                }  
+                            }
+                        }      
+                    } 
+         
+                }
+            }
+        } 
     }
 }
-    if(matrix[0][2] != null || matrix[1][1] != null || matrix[2][1] != null ){
-    if(matrix[0][2]===matrix[1][1] && matrix[1][1]===matrix[2][0]){
-        //let m=1, n = 1;
-        updateScore(1,1);
-        result=true;
-        popUp()
-    }
-} 
-
-  }  /*Write code for checking ties */
+/*Write code for checking ties */
     /* Add a pop up which displays the results (done)*/
 
 
@@ -122,8 +146,8 @@ document.querySelector(".reset").addEventListener("click", function(){
         document.querySelectorAll(".boxes>div>div")[i].classList.remove("o-symbol");
         document.querySelectorAll(".boxes>div>div")[i].classList.remove("x-symbol");
         }
-        
-        document.querySelector(".dropdown-content").classList.remove("dropdown-click")
+        document.querySelector(".dropdown-content").classList.remove("dropdown-click");
+        clicked=0;
 })
 
 document.querySelector(".new-round").addEventListener("click", function(){
@@ -132,7 +156,8 @@ document.querySelector(".new-round").addEventListener("click", function(){
     ties = 0;
     document.querySelector(".player-1>h6").innerHTML = win_x + " Win";
     document.querySelector(".player-2>h6").innerHTML = win_o + " Win";
-    document.querySelector(".dropdown-content").classList.remove("dropdown-click")
+    document.querySelector(".dropdown-content").classList.remove("dropdown-click");
+    clicked=0;
 })
 /*write logic for deciding who won the game (done) or it is a draw */
 /*After deciding who won the game make a pop up and declare the result and update the result in the block below (done) */
