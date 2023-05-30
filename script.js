@@ -94,8 +94,8 @@ function checkTie(){
         } 
     }
 }
-/*Write code for checking ties */
-    /* Add a pop up which displays the results (done)*/
+/*Write code for checking ties (done)*/
+/* Add a pop up which displays the results (done)*/
 
 
 function updateScore(m,n){
@@ -156,15 +156,20 @@ document.querySelector(".new-round").addEventListener("click", function(){
     ties = 0;
     document.querySelector(".player-1>h6").innerHTML = win_x + " Win";
     document.querySelector(".player-2>h6").innerHTML = win_o + " Win";
+    document.querySelector(".ties>h6").innerHTML = ties;
     document.querySelector(".dropdown-content").classList.remove("dropdown-click");
-    clicked=0;
+    if(clicked==8){clicked=0;}
 })
-/*write logic for deciding who won the game (done) or it is a draw */
+/*write logic for deciding who won the game (done) or it is a draw (done) */
 /*After deciding who won the game make a pop up and declare the result and update the result in the block below (done) */
 
 /* 
-1. Write logic for tie game
+1. Write logic for tie game (done)
 2. Make chance animation and drop down animation 
 3. add functionality to drowdrop menu (done)
 4. Add comments to code and improve the code structure
+*/
+
+/*
+1. Fix bugs for new round click (done)
 */
